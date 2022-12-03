@@ -8,25 +8,26 @@ def item_to_priority(item: str) -> int:
 
     if item.isupper():
         return ord(item) - 38
-    elif item.islower():
+    if item.islower():
         return ord(item) - 96
-    else:
-        return -1
+    return -1
 
 
 def main():
-    '''https://adventofcode.com/2022/day/3'''
+    '''https://adventofcode.com/2022/day/3#part2'''
     with open('input.txt', 'r', encoding="utf8") as input_file:
-        lines = input_file.readlines()
-
         priority_total = 0
+        while True:
+            rucksack_one = input_file.readline()
+            rucksack_two = input_file.readline()
+            rucksack_three = input_file.readline()
 
-        for line in lines:
-            rucksack_one, rucksack_two = (line[:len(line)//2],
-                                          line[len(line)//2:])
+            if not rucksack_one:
+                break
 
             for item in rucksack_one:
-                if rucksack_two.count(item) > 0:
+                if (rucksack_two.count(item) > 0
+                   and rucksack_three.count(item) > 0):
                     priority_total += item_to_priority(item)
                     break
 

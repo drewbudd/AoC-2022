@@ -8,10 +8,9 @@ def item_to_priority(item: str) -> int:
 
     if item.isupper():
         return ord(item) - 38
-    elif item.islower():
+    if item.islower():
         return ord(item) - 96
-    else:
-        return -1
+    return -1
 
 
 def main():

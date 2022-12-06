@@ -2,6 +2,7 @@
 
 
 def check_if_start_marker(marker: list) -> bool:
+    '''helper method that checks if start marker conditions are met'''
     marker_set = set(marker)
     if len(marker_set) == len(marker):
         return True
